@@ -161,27 +161,19 @@ Dalam proyek klasifikasi kualitas udara ini, metrik evaluasi utama yang digunaka
 
 - **Akurasi (Accuracy)**  
   Mengukur proporsi prediksi yang benar dari seluruh data uji. Akurasi memberikan gambaran umum performa model dalam mengklasifikasikan semua kelas.  
-  \[
-  \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-  \]
+  Accuracy = (TP + TN) / (TP + TN + FP + FN)
 
 - **Precision**  
   Mengukur ketepatan prediksi positif untuk masing-masing kelas, yaitu proporsi data yang diprediksi sebagai kelas tertentu yang benar-benar termasuk kelas tersebut.  
-  \[
-  \text{Precision} = \frac{TP}{TP + FP}
-  \]
+  Precision = TP / (TP + FP)
 
 - **Recall (Sensitivity)**  
   Mengukur kemampuan model untuk menangkap seluruh data positif yang sebenarnya pada kelas tertentu.  
-  \[
-  \text{Recall} = \frac{TP}{TP + FN}
-  \]
+  Recall = TP / (TP + FN)
 
 - **F1-Score**  
   Harmonik rata-rata dari precision dan recall, memberikan keseimbangan antara kedua metrik tersebut.  
-  \[
-  F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-  \]
+  F1 = 2 × (Precision × Recall) / (Precision + Recall)
 
 Di mana TP = True Positive, FP = False Positive, FN = False Negative, dan TN = True Negative.
 
@@ -245,5 +237,4 @@ Evaluasi menggunakan metrik akurasi, precision, recall, dan F1-score mengindikas
 
 ---
 
-Dengan metrik evaluasi dan analisis fitur yang lengkap, proyek ini berhasil membangun model klasifikasi kualitas udara yang andal dan informatif.
 
