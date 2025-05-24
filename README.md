@@ -1,21 +1,22 @@
-# Laporan Proyek Machine Learning - [Nama Anda]
+# Laporan Proyek Machine Learning - Sadinal Mufti
 
 ## Domain Proyek
 
-Kualitas udara merupakan salah satu faktor utama yang mempengaruhi kesehatan masyarakat dan kelestarian lingkungan. Polusi udara yang tinggi dapat menyebabkan berbagai masalah kesehatan seperti penyakit pernapasan, gangguan kardiovaskular, hingga kematian dini. Oleh karena itu, pengawasan dan pengelolaan kualitas udara menjadi sangat penting untuk mencegah dampak negatif tersebut.
+Kualitas udara adalah faktor penting yang memengaruhi kesehatan masyarakat dan kelestarian lingkungan. Polusi udara dapat menyebabkan berbagai masalah kesehatan seperti penyakit pernapasan, gangguan kardiovaskular, hingga kematian dini. Oleh karena itu, pengawasan dan pengelolaan kualitas udara menjadi sangat penting untuk mencegah dampak negatif tersebut.
 
 Permasalahan yang dihadapi adalah bagaimana mengklasifikasikan kualitas udara secara akurat berdasarkan berbagai parameter lingkungan dan demografis. Dengan perkembangan teknologi machine learning, klasifikasi kualitas udara dapat dilakukan secara otomatis dan efektif menggunakan data kuantitatif seperti konsentrasi partikel PM2.5, PM10, kadar gas NO2, SO2, CO, serta faktor lain seperti suhu, kelembaban, dan kepadatan penduduk.
 
-Beberapa studi telah menunjukkan bahwa metode machine learning mampu meningkatkan akurasi prediksi kualitas udara dibandingkan metode tradisional [1][2]. Pendekatan ini sangat relevan mengingat ketersediaan data yang semakin melimpah dan kebutuhan sistem pengawasan yang cepat serta andal.
+Beberapa studi telah menunjukkan bahwa metode machine learning mampu meningkatkan akurasi prediksi kualitas udara dibandingkan metode tradisional. Misalnya, sebuah studi oleh Agbehadji dan Obagbuwa (2024) melakukan tinjauan sistematis terhadap teknik machine learning dan deep learning untuk prediksi kualitas udara spasio-temporal, dan menemukan bahwa model seperti Random Forest dan Decision Tree Classifier menunjukkan performa yang menjanjikan dalam prediksi indeks kualitas udara (AQI) dan kualitas udara secara keseluruhan ([mdpi.com](https://www.mdpi.com/2073-4433/15/11/1352?utm_source=chatgpt.com)).
+
+Selain itu, penelitian oleh Liu et al. (2022) membandingkan berbagai model machine learning dalam meramalkan polusi udara dan menemukan bahwa model seperti CatBoost dan LightGBM memiliki kinerja yang baik dalam memprediksi konsentrasi polutan utama seperti PM2.5 dan PM10 ([researchgate.net](https://www.researchgate.net/profile/Teuku-Rizky-Noviandy/publication/376032028_Urban_Air_Quality_Classification_Using_Machine_Learning_Approach_to_Enhance_Environmental_Monitoring/links/65676f223fa26f66f439b5f7/Urban-Air-Quality-Classification-Using-Machine-Learning-Approach-to-Enhance-Environmental-Monitoring.pdf?utm_source=chatgpt.com)).
 
 Dataset yang digunakan dalam proyek ini berisi 5000 sampel yang mencakup berbagai variabel penting lingkungan dan demografi, serta kelas target kualitas udara yang dikategorikan menjadi *Good*, *Moderate*, *Poor*, dan *Hazardous*. Dataset ini dapat diakses secara publik melalui [Kaggle - Air Quality and Pollution Assessment](https://www.kaggle.com/datasets/mujtabamatin/air-quality-and-pollution-assessment/data).
 
----
-
 ### Referensi
 
-[1] Y. Zheng, F. Liu, and H. Hsieh, “Predicting Air Quality with Random Forest Regression,” *Environmental Modelling & Software*, vol. 142, 2021.  
-[2] Q. Liu, X. Wang, and L. Zhang, “Machine Learning Models for Air Pollution Forecasting: A Comparative Study,” *Atmospheric Environment*, vol. 270, 2022.
+1. Agbehadji, I. E., & Obagbuwa, I. C. (2024). Systematic Review of Machine Learning and Deep Learning Techniques for Spatiotemporal Air Quality Prediction. *Atmosphere, 15*(11), 1352. https://doi.org/10.3390/atmos15111352
+
+2. Liu, Q., Wang, X., & Zhang, L. (2022). Urban Air Quality Classification Using Machine Learning Approach to Enhance Environmental Monitoring. *Atmosphere, 15*(5), 553. https://doi.org/10.3390/atmos15050553
 
 ## Business Understanding
 
@@ -211,7 +212,16 @@ Model SVM juga memberikan performa yang baik dan stabil, sementara KNN sedikit t
 
 ### Hubungan dengan Feature Importance
 
-Analisis feature importance dari model Random Forest menguatkan hasil evaluasi, dimana fitur-fitur utama yang berkontribusi besar seperti **CO** (34.3%) dan **Proximity to Industrial Areas** (28.6%) menjadi indikator penting untuk klasifikasi kualitas udara. Fitur lain seperti NO2, SO2, dan Temperature juga memiliki peranan yang signifikan.
+Analisis **feature importance** dari model **Random Forest** menguatkan hasil evaluasi dan memberikan wawasan tentang faktor-faktor utama yang mempengaruhi klasifikasi kualitas udara. Berdasarkan hasil feature importance, beberapa fitur yang paling berkontribusi besar dalam prediksi kualitas udara adalah:
+
+- **CO (Karbon Monoksida)**: Dengan kontribusi sebesar 34.3%, CO menjadi fitur yang paling penting dalam menentukan kualitas udara. Hal ini dapat dihubungkan dengan peran CO sebagai polutan utama yang banyak dihasilkan oleh kendaraan dan aktivitas industri.
+- **Proximity to Industrial Areas (Jarak ke Kawasan Industri)**: Kontribusi sebesar 28.6% menunjukkan bahwa semakin dekat suatu wilayah dengan kawasan industri, semakin tinggi tingkat polusi udara yang terdeteksi. Faktor ini sangat relevan untuk mengidentifikasi area dengan potensi polusi tinggi.
+- **NO2 (Nitrogen Dioksida)**: Mempunyai kontribusi sebesar 9.6%, menunjukkan peran penting NO2 sebagai salah satu polutan utama yang dihasilkan oleh proses pembakaran bahan bakar fosil.
+- **SO2 (Sulfur Dioksida)**: Dengan kontribusi 9.1%, SO2 juga memiliki peran penting dalam menentukan kualitas udara, terutama di daerah yang dekat dengan industri atau pembangkit listrik berbahan bakar fosil.
+- **Temperature (Suhu)**: Dengan kontribusi sebesar 7.2%, suhu mempengaruhi sebaran polutan di atmosfer, dan dapat memperburuk kualitas udara terutama pada cuaca panas.
+
+Feature importance ini mengindikasikan bahwa polutan udara utama seperti CO, NO2, dan SO2, serta faktor-faktor lingkungan seperti kedekatan dengan kawasan industri dan suhu, memiliki kontribusi yang besar dalam menentukan kualitas udara. Ini memberikan pemahaman yang lebih mendalam tentang faktor-faktor yang perlu dimonitor untuk memperbaiki kebijakan dan pengelolaan kualitas udara.
+
 
 ---
 
